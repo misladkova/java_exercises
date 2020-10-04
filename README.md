@@ -1,1 +1,3 @@
-# java_exercises
+# Java exercises
+
+exercises from course https://java-programming.mooc.fi 
