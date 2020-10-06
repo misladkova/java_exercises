@@ -15,7 +15,7 @@ public class StorageFacility {
     }
 
     public ArrayList<String> contents(String storageUnit){
-        if (!(storage.get(storageUnit)==null)){
+        if (!(storage.get(storageUnit).isEmpty())){
             for (String unit: storage.keySet()){
                 return storage.get(storageUnit);
             }
