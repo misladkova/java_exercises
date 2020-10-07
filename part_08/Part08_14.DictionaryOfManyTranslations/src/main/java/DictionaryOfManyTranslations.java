@@ -15,10 +15,8 @@ public class DictionaryOfManyTranslations {
     }
 
     public ArrayList<String> translate(String word) {
-        if (!(translations.get(word)==null)){
-            for (String slovo : translations.keySet()) {
-                return translations.get(word);
-            }
+        if (!(translations.get(word) == null)) {
+            return translations.get(word);
         }
         return new ArrayList<>();
     }

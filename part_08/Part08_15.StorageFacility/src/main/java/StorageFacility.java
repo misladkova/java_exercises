@@ -5,34 +5,32 @@ public class StorageFacility {
 
     private HashMap<String, ArrayList<String>> storage;
 
-    public StorageFacility(){
+    public StorageFacility() {
         this.storage = new HashMap<>();
     }
 
-    public void add(String unit, String item){
+    public void add(String unit, String item) {
         storage.putIfAbsent(unit, new ArrayList<>());
         storage.get(unit).add(item);
     }
 
-    public ArrayList<String> contents(String storageUnit){
-        if (!(storage.get(storageUnit).isEmpty())){
-            for (String unit: storage.keySet()){
-                return storage.get(storageUnit);
-            }
+    public ArrayList<String> contents(String storageUnit) {
+        if (!(storage.get(storageUnit).isEmpty())) {
+            return storage.get(storageUnit);
         }
         return new ArrayList<>();
     }
 
-    public void remove(String storageUnit, String item){
+    public void remove(String storageUnit, String item) {
         storage.get(storageUnit).remove(item);
-        if ((storage.get(storageUnit)).isEmpty()){
+        if ((storage.get(storageUnit)).isEmpty()) {
             storage.remove(storageUnit);
         }
     }
 
-    public ArrayList<String> storageUnits(){
+    public ArrayList<String> storageUnits() {
         ArrayList<String> storageUnits = new ArrayList<>();
-        for (String key: storage.keySet()){
+        for (String key : storage.keySet()) {
             storageUnits.add(key);
         }
         return storageUnits;
