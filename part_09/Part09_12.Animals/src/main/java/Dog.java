@@ -18,14 +18,4 @@ public class Dog extends Animal implements NoiseCapable{
     public void makeNoise() {
         bark();
     }
-
-    @Override
-    public void eat(){
-        super.eat();
-    }
-
-    @Override
-    public void sleep(){
-        super.sleep();
-    }
 }

@@ -18,18 +18,6 @@ public class Cat extends Animal implements NoiseCapable{
     public void makeNoise() {
         purr();
     }
-
-    @Override
-    public void eat(){
-        super.eat();
-    }
-
-    @Override
-    public void sleep(){
-        super.sleep();
-    }
-
-
 }
 
 
