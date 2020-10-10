@@ -16,6 +16,14 @@ public class Main {
 
         Cat garfield = new Cat("Garfield");
         garfield.purr();
+
+        NoiseCapable dogs = new Dog();
+        dogs.makeNoise();
+
+        NoiseCapable cats = new Cat("Garfield");
+        cats.makeNoise();
+        Cat c = (Cat) cat;
+        c.purr();
     }
 
 }

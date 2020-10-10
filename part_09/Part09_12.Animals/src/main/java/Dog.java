@@ -1,4 +1,4 @@
-public class Dog extends Animal{
+public class Dog extends Animal implements NoiseCapable{
 
     private String name;
 
@@ -10,8 +10,13 @@ public class Dog extends Animal{
         super("Dog");
     }
 
-    public void bark(){
+    public void bark() {
         System.out.println(super.getName()+" barks");
+    }
+
+    @Override
+    public void makeNoise() {
+        bark();
     }
 
     @Override
