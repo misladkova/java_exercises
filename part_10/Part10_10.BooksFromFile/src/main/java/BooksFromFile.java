@@ -11,7 +11,7 @@ public class BooksFromFile {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println(readBooks("file.txt"));
+        System.out.println(readBooks(scanner.nextLine()));
 
     }
 
