@@ -4,12 +4,17 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class LiteracyComparison {
     
     public static void main(String[] args) {
 
-        System.out.println(readRegister("literacy.csv"));
+
+        sortRegister(readRegister("literacy.csv"));
+
+
     }
 
     public static ArrayList<Literacy> readRegister(String file){
@@ -25,5 +30,12 @@ public class LiteracyComparison {
         }
         return register;
     }
+
+    public static void sortRegister(ArrayList<Literacy> register){
+        Collections.sort(register);
+        register.stream()
+                .forEach(System.out::println);
+    }
+
 
 }

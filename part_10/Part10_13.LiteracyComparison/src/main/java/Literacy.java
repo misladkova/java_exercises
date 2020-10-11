@@ -3,9 +3,9 @@ public class Literacy implements Comparable<Literacy>{
     private String country;
     private  int year;
     private String gender;
-    private int literacyPercentage;
+    private double literacyPercentage;
 
-    public Literacy(String country, int year, String gender, int literacyPercentage){
+    public Literacy(String country, int year, String gender, double literacyPercentage){
         this.country = country;
         this.year = year;
         this.gender = gender;
@@ -24,7 +24,7 @@ public class Literacy implements Comparable<Literacy>{
         return gender;
     }
 
-    public int getLiteracyPercentage() {
+    public double getLiteracyPercentage() {
         return literacyPercentage;
     }
 
@@ -35,6 +35,12 @@ public class Literacy implements Comparable<Literacy>{
 
     @Override
     public int compareTo(Literacy literacy){
-        return this.literacyPercentage-literacy.getLiteracyPercentage();
+        if(literacyPercentage-literacy.getLiteracyPercentage()==0){
+            return 0;
+        }
+        if(literacyPercentage-literacy.getLiteracyPercentage()<0){
+            return -1;
+        }
+        return 1;
     }
 }
