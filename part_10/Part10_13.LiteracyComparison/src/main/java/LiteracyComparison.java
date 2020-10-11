@@ -14,6 +14,8 @@ public class LiteracyComparison {
 
         sortRegister(readRegister("literacy.csv"));
 
+        //System.out.println(readRegister("literacy.csv"));
+
 
     }
 
@@ -23,7 +25,7 @@ public class LiteracyComparison {
             Files.lines(Paths.get(file))
                     .map(line->line.split(","))
                     .filter(line->line.length>=6)
-                    .map(line->new Literacy(line[3], Integer.valueOf(line[4]), line[2], Integer.valueOf(line[5])))
+                    .map(line->new Literacy(line[3], Integer.valueOf(line[4]), line[2], Double.valueOf(line[5])))
                     .forEach(literacy->register.add(literacy));
         }catch (Exception e){
             System.out.println("Error: "+e.getMessage());
