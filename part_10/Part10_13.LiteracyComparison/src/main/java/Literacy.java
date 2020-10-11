@@ -1,4 +1,4 @@
-public class Literacy {
+public class Literacy implements Comparable<Literacy>{
 
     private String country;
     private  int year;
@@ -28,7 +28,13 @@ public class Literacy {
         return literacyPercentage;
     }
 
+    @Override
     public String toString(){
         return getCountry()+" ("+getYear()+"), "+getGender()+", "+getLiteracyPercentage();
+    }
+
+    @Override
+    public int compareTo(Literacy literacy){
+        return this.literacyPercentage-literacy.getLiteracyPercentage();
     }
 }
