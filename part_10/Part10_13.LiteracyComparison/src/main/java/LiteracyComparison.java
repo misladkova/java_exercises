@@ -23,9 +23,10 @@ public class LiteracyComparison {
         ArrayList<Literacy> register = new ArrayList<>();
         try{
             Files.lines(Paths.get(file))
+                    .map(line->line.replace("(%)", ""))
                     .map(line->line.split(","))
                     .filter(line->line.length>=6)
-                    .map(line->new Literacy(line[3], Integer.valueOf(line[4]), line[2], Double.valueOf(line[5])))
+                    .map(line->new Literacy(line[3], Integer.valueOf(line[4]), line[2].trim(), Double.valueOf(line[5])))
                     .forEach(literacy->register.add(literacy));
         }catch (Exception e){
             System.out.println("Error: "+e.getMessage());
