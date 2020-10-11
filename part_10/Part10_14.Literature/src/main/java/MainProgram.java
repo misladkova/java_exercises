@@ -1,6 +1,7 @@
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class MainProgram {
@@ -32,7 +33,10 @@ public class MainProgram {
     }
 
     public static ArrayList<Book> sortLibrary(ArrayList<Book> list){
-        Collections.sort(list);
+        Comparator<Book> comparator = Comparator
+                .comparing(Book::getAge)
+                .thenComparing(Book::getName);
+        Collections.sort(list, comparator);
         return list;
     }
 
