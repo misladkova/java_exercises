@@ -13,13 +13,13 @@ public class LiteracyComparison {
 
     }
 
-    public static ArrayList<String> register(String file){
-        ArrayList<String> register = new ArrayList<>();
+    public static ArrayList<Literacy> register(String file){
+        ArrayList<Literacy> register = new ArrayList<>();
         try{
             Files.lines(Paths.get(file))
                     .map(line->line.split(","))
                     .filter(line->line.length>=6)
-                    .map(line->new String(line[3], )
+                    .map(line->
         }catch (Exception e){
             System.out.println("Error: "+e.getMessage());
         }
