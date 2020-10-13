@@ -7,25 +7,17 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Card first = new Card(2, Suit.DIAMOND);
-        Card second = new Card(14, Suit.SPADE);
-        Card third = new Card(14, Suit.HEART);
+        Hand hand = new Hand();
 
-        System.out.println(first);
-        System.out.println(second);
-        System.out.println(third);
+        hand.add(new Card(12, Suit.HEART));
+        hand.add(new Card(4, Suit.SPADE));
+        hand.add(new Card(2, Suit.DIAMOND));
+        hand.add(new Card(14, Suit.SPADE));
+        hand.add(new Card(7, Suit.HEART));
+        hand.add(new Card(2, Suit.SPADE));
 
-        List<Card> cards = new ArrayList<>();
-        cards.add(first);
-        cards.add(second);
-        cards.add(third);
+        hand.sortBySuit();
 
-        Comparator<Card> sorted = Comparator
-                .comparing(Card::getValue)
-                .thenComparing(Card::getSuit);
-
-        Collections.sort(cards, sorted);
-        cards.stream()
-                .forEach(s-> System.out.println(s));
+        hand.print();
     }
 }

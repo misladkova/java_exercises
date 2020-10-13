@@ -44,5 +44,13 @@ public class Hand implements Comparable<Hand>{
         }
         return 0;
     }
+
+    public void sortBySuit(){
+        Comparator<Card> sorted = Comparator
+                .comparing(Card::getSuit)
+                .thenComparing(Card::getValue);
+
+        Collections.sort(cardsInHand, sorted);
+    }
 }
 
