@@ -23,7 +23,7 @@ public class Program {
     }
 
     public void addFlight(Airplane plane, Airport port){
-        flightsMap.put(plane, port);
+        flightsMap.putIfAbsent(plane, port);
     }
 
     public void printAirplanes(){
@@ -33,7 +33,7 @@ public class Program {
     }
 
     public void printFlights(){
-
+        flightsMap.forEach((key, value)-> System.out.println(key+" "+value));
     }
 
     public void printSpecificAirplane(){

@@ -1,5 +1,9 @@
 package FlightControl.ui;
 
+import FlightControl.domain.Airplane;
+import FlightControl.domain.Airport;
+import FlightControl.logic.Program;
+
 import java.util.Scanner;
 
 public class UI {
@@ -9,6 +13,8 @@ public class UI {
     public UI(Scanner scanner){
         this.scan = scanner;
     }
+
+    Program program = new Program();
 
     public void airportControl(Scanner scanner){
         while(true){
@@ -21,10 +27,20 @@ public class UI {
                 break;
             }
             if (action.equals("1")){
-
+                System.out.print("Give the airplane id: ");
+                String id = scanner.nextLine();
+                System.out.print("Give the airplane capacity: ");
+                int capacity = Integer.valueOf(scanner.nextLine());
+                program.addAirplane(new Airplane(id, capacity));
             }
             if(action.equals("2")){
-
+                System.out.print("Give the airplane id: ");
+                String id = scanner.nextLine();
+                System.out.println("Give the departure airport id: ");
+                String dep = scanner.nextLine();
+                System.out.println("Give the target airport id: ");
+                String tar = scanner.nextLine();
+                program.addFlight(new Airplane(id, 0), new Airport(dep, tar));
             }
         }
     }
