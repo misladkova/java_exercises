@@ -2,18 +2,18 @@ package FlightControl.domain;
 
 public class Flight {
 
-    private Airplane airplaneID;
+    private Airplane airplane;
     private String departureID;
     private String targetID;
 
     public Flight(Airplane airplane, String departure, String target){
-        this.airplaneID = airplane;
+        this.airplane = airplane;
         this.departureID = departure;
         this.targetID = target;
     }
 
-    public Airplane getAirplaneID() {
-        return airplaneID;
+    public Airplane getAirplane() {
+        return airplane;
     }
 
     public String getDepartureID() {
@@ -22,5 +22,9 @@ public class Flight {
 
     public String getTargetID() {
         return targetID;
+    }
+
+    public String toString(){
+        return airplane.toString()+" ("+this.departureID+"-"+this.targetID+")";
     }
 }
