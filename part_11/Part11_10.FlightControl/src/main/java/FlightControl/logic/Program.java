@@ -31,10 +31,12 @@ public class Program {
         for(Airplane plane: airplanesList){
             System.out.println(plane);
         }
+        System.out.println();
     }
 
     public void printFlights(){
         flightsMap.forEach((key, value)-> System.out.println(key+" "+value));
+        System.out.println();
     }
 
     public void printSpecificAirplane(String id){
@@ -43,6 +45,7 @@ public class Program {
                 System.out.println(plane);
             }
         }
+        System.out.println();
     }
 
 }

@@ -13,6 +13,7 @@ public class Main {
         UI ui = new UI(scan);
 
         ui.airportControl();
+        System.out.println();
         ui.flightControl();
     }
 }
