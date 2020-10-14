@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Hand implements Comparable<Hand>{
+public class Hand {
 
     private List<Card> cardsInHand;
 
@@ -26,29 +26,6 @@ public class Hand implements Comparable<Hand>{
         Collections.sort(cardsInHand, sorted);
         cardsInHand.stream()
                 .forEach(s-> System.out.println(s));
-    }
-
-    @Override
-    public int compareTo(Hand hand) {
-        int sum = 0;
-        Iterator<Card> cardIterator = cardsInHand.iterator();
-
-        while (cardIterator.hasNext()) {
-            sum+=cardIterator.next().getValue();
-        }
-        int sum2 = 0;
-        
-
-        while (card2Iterator.hasNext()) {
-            sum += cardIterator.next().getValue();
-        }
-        if (sum-sum2<0){
-            return -1;
-        }
-        if (sum-sum2>0){
-            return 1;
-        }
-        return 0;
     }
 
     public void sortBySuit(){
