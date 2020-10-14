@@ -21,7 +21,7 @@ public class UI {
             System.out.print("Choose an action:\n" +
                     "[1] Add an airplane\n" +
                     "[2] Add a flight\n" +
-                    "[x] Exit Airport Asset Control\n<");
+                    "[x] Exit Airport Asset Control\n< ");
             String action = scanner.nextLine();
             if (action.equals("x")){
                 break;
@@ -36,9 +36,9 @@ public class UI {
             if(action.equals("2")){
                 System.out.print("Give the airplane id: ");
                 String id = scanner.nextLine();
-                System.out.println("Give the departure airport id: ");
+                System.out.print("Give the departure airport id: ");
                 String dep = scanner.nextLine();
-                System.out.println("Give the target airport id: ");
+                System.out.print("Give the target airport id: ");
                 String tar = scanner.nextLine();
                 program.addFlight(id, new Airport(dep, tar));
             }
@@ -52,7 +52,7 @@ public class UI {
                     "[2] Print flights\n" +
                     "[3] Print airplane details\n" +
                     "[x] Quit\n" +
-                    ">");
+                    "> ");
             String action = scanner.nextLine();
             if (action.equals("x")){
                 break;
@@ -70,8 +70,4 @@ public class UI {
             }
         }
     }
-
-
-
-
 }

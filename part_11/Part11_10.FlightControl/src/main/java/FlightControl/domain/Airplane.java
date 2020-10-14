@@ -19,6 +19,6 @@ public class Airplane {
     }
 
     public String toString(){
-        return getAirplaneID()+" ("+getCapacity()+")";
+        return getAirplaneID()+" ("+getCapacity()+" capacity)";
     }
 }
