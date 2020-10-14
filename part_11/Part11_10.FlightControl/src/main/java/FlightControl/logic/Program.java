@@ -2,17 +2,18 @@ package FlightControl.logic;
 
 import FlightControl.domain.Airplane;
 import FlightControl.domain.Airport;
+import FlightControl.domain.Flight;
 
 import java.util.*;
 
 public class Program {
 
     private List<Airplane> airplanesList;
-    private Map<Airplane, Airport> flightsMap;
+    private List<Flight> flightsList;
 
     public Program(){
         this.airplanesList = new ArrayList<>();
-        this.flightsMap = new HashMap<>();
+        this.flightsList = new ArrayList<>();
     }
 
     public void addAirplane(Airplane airplane){
@@ -22,7 +23,8 @@ public class Program {
     public void addFlight(String planeID, Airport port){
         for(Airplane plane: airplanesList) {
             if (plane.getAirplaneID().equals(planeID)) {
-                flightsMap.putIfAbsent(plane, port);
+                Flight f = new Flight(plane, port);
+                flightsList.add(f);
             }
         }
     }
@@ -35,7 +37,7 @@ public class Program {
     }
 
     public void printFlights(){
-        flightsMap.forEach((key, value)-> System.out.println(key+" "+value));
+        flightsList.forEach(flight-> System.out.println(flight.toString()));
         System.out.println();
     }
 
