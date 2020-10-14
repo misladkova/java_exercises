@@ -8,15 +8,15 @@ import java.util.Scanner;
 
 public class UI {
 
-    private Scanner scan;
+    private Scanner scanner;
 
     public UI(Scanner scanner){
-        this.scan = scanner;
+        this.scanner = scanner;
     }
 
     Program program = new Program();
 
-    public void airportControl(Scanner scanner){
+    public void airportControl(){
         while(true){
             System.out.print("Choose an action:\n" +
                     "[1] Add an airplane\n" +
@@ -40,12 +40,12 @@ public class UI {
                 String dep = scanner.nextLine();
                 System.out.println("Give the target airport id: ");
                 String tar = scanner.nextLine();
-                program.addFlight(new Airplane(id, 0), new Airport(dep, tar));
+                program.addFlight(id, new Airport(dep, tar));
             }
         }
     }
 
-    public void flightControl(Scanner scanner){
+    public void flightControl(){
         while(true){
             System.out.print("Choose an action:\n" +
                     "[1] Print airplanes\n" +
@@ -58,13 +58,15 @@ public class UI {
                 break;
             }
             if (action.equals("1")){
-
+                program.printAirplanes();
             }
             if(action.equals("2")){
-
+                program.printFlights();
             }
             if (action.equals("3")){
-
+                System.out.print("Give the airplane id: ");
+                String id = scanner.nextLine();
+                program.printSpecificAirplane(id);
             }
         }
     }

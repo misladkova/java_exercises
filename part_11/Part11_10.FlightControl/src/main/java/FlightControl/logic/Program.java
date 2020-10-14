@@ -3,10 +3,7 @@ package FlightControl.logic;
 import FlightControl.domain.Airplane;
 import FlightControl.domain.Airport;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Program {
 
@@ -22,8 +19,12 @@ public class Program {
         airplanesList.add(airplane);
     }
 
-    public void addFlight(Airplane plane, Airport port){
-        flightsMap.putIfAbsent(plane, port);
+    public void addFlight(String planeID, Airport port){
+        for(Airplane plane: airplanesList) {
+            if (plane.getAirplaneID().equals(planeID)) {
+                flightsMap.putIfAbsent(plane, port);
+            }
+        }
     }
 
     public void printAirplanes(){
@@ -36,9 +37,9 @@ public class Program {
         flightsMap.forEach((key, value)-> System.out.println(key+" "+value));
     }
 
-    public void printSpecificAirplane(){
+    public void printSpecificAirplane(String id){
         for(Airplane plane: airplanesList){
-            if (plane.getAirplaneID().equals("input")){
+            if (plane.getAirplaneID().equals(id)){
                 System.out.println(plane);
             }
         }
