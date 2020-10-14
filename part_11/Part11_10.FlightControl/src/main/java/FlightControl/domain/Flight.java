@@ -3,13 +3,13 @@ package FlightControl.domain;
 public class Flight {
 
     private Airplane airplane;
-    private String departureID;
-    private String targetID;
+    private String departure;
+    private String target;
 
     public Flight(Airplane airplane, String departure, String target){
         this.airplane = airplane;
-        this.departureID = departure;
-        this.targetID = target;
+        this.departure = departure;
+        this.target = target;
     }
 
     public Airplane getAirplane() {
@@ -17,14 +17,14 @@ public class Flight {
     }
 
     public String getDepartureID() {
-        return departureID;
+        return departure;
     }
 
     public String getTargetID() {
-        return targetID;
+        return target;
     }
 
     public String toString(){
-        return airplane.toString()+" ("+this.departureID+"-"+this.targetID+")";
+        return airplane.toString()+" ("+this.departure+"-"+this.target+")";
     }
 }
