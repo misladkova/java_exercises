@@ -1,21 +1,15 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class Hand implements Comparable<Hand>{
 
     private List<Card> cardsInHand;
-    private int sum;
 
     public Hand(){
         this.cardsInHand = new ArrayList<>();
-        this.sum = sum;
     }
 
     public void add(Card card){
         cardsInHand.add(card);
-        sum+= card.getValue();
     }
 
     public void print(){
@@ -35,11 +29,23 @@ public class Hand implements Comparable<Hand>{
     }
 
     @Override
-    public int compareTo(Hand o) {
-        if (this.sum-o.sum<0){
+    public int compareTo(Hand hand) {
+        int sum = 0;
+        Iterator<Card> cardIterator = cardsInHand.iterator();
+
+        while (cardIterator.hasNext()) {
+            sum+=cardIterator.next().getValue();
+        }
+        int sum2 = 0;
+        
+
+        while (card2Iterator.hasNext()) {
+            sum += cardIterator.next().getValue();
+        }
+        if (sum-sum2<0){
             return -1;
         }
-        if (this.sum-o.sum>0){
+        if (sum-sum2>0){
             return 1;
         }
         return 0;
