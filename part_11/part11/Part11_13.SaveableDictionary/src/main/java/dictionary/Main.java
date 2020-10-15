@@ -4,6 +4,7 @@ public class Main {
     public static void main(String[] args) {
 
         SaveableDictionary dictionary = new SaveableDictionary("words.txt");
+
         boolean wasSuccessful = dictionary.load();
 
         if (wasSuccessful) {
@@ -13,5 +14,7 @@ public class Main {
         System.out.println(dictionary.translate("apina"));
         System.out.println(dictionary.translate("ohjelmointi"));
         System.out.println(dictionary.translate("alla oleva"));
+
+        dictionary.save();
     }
 }

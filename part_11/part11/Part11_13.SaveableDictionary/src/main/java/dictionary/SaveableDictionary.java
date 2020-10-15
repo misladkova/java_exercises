@@ -1,7 +1,9 @@
 package dictionary;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -49,6 +51,21 @@ public class SaveableDictionary {
             String[] parts = line.split(":");
             dictionary.putIfAbsent(parts[0], parts[1]);
         }
+        return true;
+    }
+
+    public boolean save(){
+        PrintWriter save = null;
+        try {
+            save = new PrintWriter(file);
+        } catch (FileNotFoundException e) {
+            return false;
+        }
+        for (String s: dictionary.keySet()){
+            String value = dictionary.get(s);
+            save.println(s+":"+value);
+        }
+        save.close();
         return true;
     }
 
