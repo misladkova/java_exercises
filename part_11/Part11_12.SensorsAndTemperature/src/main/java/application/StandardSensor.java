@@ -1,10 +1,10 @@
 package application;
 
-public class StandardSensor implements Sensor{
+public class StandardSensor implements Sensor {
 
     private int number;
 
-    public StandardSensor(int num){
+    public StandardSensor(int num) {
         this.number = num;
     }
 

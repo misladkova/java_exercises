@@ -2,11 +2,11 @@ package application;
 
 import java.util.Random;
 
-public class TemperatureSensor implements Sensor{
+public class TemperatureSensor implements Sensor {
 
     private boolean boo;
 
-    public TemperatureSensor(){
+    public TemperatureSensor() {
         this.boo = false;
     }
 
@@ -17,20 +17,19 @@ public class TemperatureSensor implements Sensor{
 
     @Override
     public void setOn() {
-        boo = !boo;
+        boo = true;
     }
 
     @Override
     public void setOff() {
-        boo = !boo;
+        boo = false;
     }
 
     @Override
     public int read() {
-        if (!isOn()){
+        if (boo == false) {
             throw new IllegalStateException();
         }
-        int temperature = (new Random().nextInt(61))-30;
-        return temperature;
+        return (new Random().nextInt(61)) - 30;
     }
 }

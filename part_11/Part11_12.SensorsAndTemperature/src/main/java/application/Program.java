@@ -5,17 +5,21 @@ public class Program {
     public static void main(String[] args) {
 
 
-        TemperatureSensor ts = new TemperatureSensor();
+        Sensor kumpula = new TemperatureSensor();
+        Sensor kaisaniemi = new TemperatureSensor();
+        Sensor helsinkiAirport = new TemperatureSensor();
 
-        System.out.println(ts.isOn());
-        //System.out.println(ts.read());
-        ts.setOn();
-        System.out.println(ts.read());
-        ts.setOff();
-        System.out.println(ts.isOn());
-        ts.setOn();
-        System.out.println(ts.read());
-        
+        AverageSensor helsinkiRegion = new AverageSensor();
+        helsinkiRegion.addSensor(kumpula);
+        helsinkiRegion.addSensor(kaisaniemi);
+        helsinkiRegion.addSensor(helsinkiAirport);
+
+        helsinkiRegion.setOn();
+        System.out.println("temperature in Helsinki region " + helsinkiRegion.read() + " degrees");
+        System.out.println("temperature in Helsinki region " + helsinkiRegion.read() + " degrees");
+        System.out.println("temperature in Helsinki region " + helsinkiRegion.read() + " degrees");
+
+        System.out.println("readings: " + helsinkiRegion.readings());
     }
 
 }
