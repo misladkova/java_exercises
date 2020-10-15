@@ -32,6 +32,14 @@ public class AverageSensor implements Sensor{
 
     @Override
     public int read() {
-        return 0;
+        if (allSensors.isEmpty()||isOn()==false){
+            throw new IllegalStateException();
+        }
+        int sum = 0;
+        for (Sensor s: allSensors){
+            sum+=s.read();
+        }
+        return sum/ allSensors.size();
+
     }
 }
