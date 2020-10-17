@@ -50,6 +50,9 @@ public class HashMap<K, V> {
         } else {
             valuesAtIndex.get(index).setValue(value);
         }
+        if(index*1.0/map.length>0.75){
+            grow();
+        }
     }
 
     private void copy(ArrayList<Pair<K, V>>[] newMap, int fromIndex) {
@@ -72,7 +75,17 @@ public class HashMap<K, V> {
     }
 
     public V remove(K key) {
-
+        ArrayList<Pair<K, V>> valuesAtIndex = getListBasedOnKey(key);
+        if(valuesAtIndex.size()==0){
+            return null;
+        }
+        int idx = getIndexOfKey(valuesAtIndex, key);
+        if (idx<0){
+            return null;
+        }
+        Pair<K, V> newValue = valuesAtIndex.get(idx);
+        valuesAtIndex.remove(newValue);
+        return newValue.getValue();
     }
 
 
