@@ -3,8 +3,8 @@ public class Program {
 
     public static void main(String[] args) {
         
-        //MagicSquareFactory msFactory = new MagicSquareFactory();
-        //System.out.println(msFactory.createMagicSquare(3));
+        MagicSquareFactory msFactory = new MagicSquareFactory();
+        System.out.println(msFactory.createMagicSquare(3));
 
         MagicSquare square = new MagicSquare(3);
         square.placeValue(0, 0, 8);
