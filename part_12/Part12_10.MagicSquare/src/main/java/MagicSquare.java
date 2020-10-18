@@ -111,14 +111,14 @@ public class MagicSquare {
         if (x < 0 || y < 0 || x >= getWidth() || y >= getHeight()) {
             return -1;
         }
-        return this.square[x][y];
+        return this.square[y][x];
     }
 
     public void placeValue(int x, int y, int value) {
         if (x < 0 || y < 0 || x >= getWidth() || y >= getHeight()) {
             return;
         }
-        this.square[x][y] = value;
+        this.square[y][x] = value;
     }
 
     public int getWidth() {
