@@ -13,13 +13,12 @@ public class MagicSquare {
         this.square = new int[size][size];
     }
 
-    // implement these three methods
     public ArrayList<Integer> sumsOfRows() {
         ArrayList<Integer> rowsSum = new ArrayList();
-        for(int r = 0; r< square.length; r++){
+        for (int r = 0; r < square.length; r++) {
             int sum = 0;
-            for(int c = 0; c< square.length; c++){
-                sum+=square[r][c];
+            for (int c = 0; c < square.length; c++) {
+                sum += square[r][c];
             }
             rowsSum.add(sum);
         }
@@ -28,10 +27,10 @@ public class MagicSquare {
 
     public ArrayList<Integer> sumsOfColumns() {
         ArrayList<Integer> columnsSum = new ArrayList();
-        for(int r = 0; r< square.length; r++){
+        for (int c = 0; c < square.length; c++) {
             int sum = 0;
-            for(int c = 0; c< square.length; c++){
-                sum+=square[r][c];
+            for (int r = 0; r < square.length; r++) {
+                sum += square[r][c];
             }
             columnsSum.add(sum);
         }
@@ -39,10 +38,31 @@ public class MagicSquare {
     }
 
     public ArrayList<Integer> sumsOfDiagonals() {
-        return new ArrayList<>();
+        ArrayList<Integer> diagonalsSum = new ArrayList<>();
+        int sum1 = 0;
+        for (int r = 0; r < square.length; r++) {
+            for (int c = 0; c < square.length; c++) {
+                if (r == c) {
+                    sum1 += square[r][c];
+                }
+            }
+        }
+        diagonalsSum.add(sum1);
+
+        int sum2 = 0;
+        for (int r = 0; r < square.length; r++) {
+            for (int c =0; c< square.length; c++) {
+                if (c== square.length-r-1) {
+                    sum2 += square[r][c];
+                }
+            }
+        }
+        diagonalsSum.add(sum2);
+
+        return diagonalsSum;
+
     }
 
-    // ready-made helper methods -- don't touch these
     public boolean isMagicSquare() {
         return sumsAreSame() && allNumbersDifferent();
     }
@@ -89,7 +109,7 @@ public class MagicSquare {
 
     public int readValue(int x, int y) {
         if (x < 0 || y < 0 || x >= getWidth() || y >= getHeight()) {
-            return - 1;
+            return -1;
         }
         return this.square[y][x];
     }
