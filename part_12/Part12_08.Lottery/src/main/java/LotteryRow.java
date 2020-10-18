@@ -18,7 +18,7 @@ public class LotteryRow {
         this.numbers = new ArrayList<>();
         for(int i=0; i<7; i++){
             int drawnNumber = new Random().nextInt(40)+1;
-            if(containsNumber(drawnNumber)){
+            if(!(containsNumber(drawnNumber))){
                 numbers.add(drawnNumber);
             }
         }
