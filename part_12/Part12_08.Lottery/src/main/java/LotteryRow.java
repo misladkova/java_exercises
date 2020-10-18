@@ -1,5 +1,7 @@
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Random;
 
 public class LotteryRow {
@@ -11,15 +13,18 @@ public class LotteryRow {
     }
 
     public ArrayList<Integer> numbers() {
+        Collections.sort(numbers);
         return this.numbers;
     }
 
     public void randomizeNumbers() {
         this.numbers = new ArrayList<>();
-        for(int i=0; i<7; i++){
+        int i=0;
+        while(i<7){
             int drawnNumber = new Random().nextInt(40)+1;
             if(!(containsNumber(drawnNumber))){
                 numbers.add(drawnNumber);
+                i++;
             }
         }
     }
