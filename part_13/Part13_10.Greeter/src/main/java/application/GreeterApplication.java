@@ -43,6 +43,8 @@ public class GreeterApplication extends Application {
         Scene scene1 = new Scene(gp);
         Scene scene2 = new Scene(sp);
 
+        start.setOnAction(actionEvent -> stage.setScene(scene2));
+
         stage.setScene(scene1);
         stage.show();
     }
