@@ -29,6 +29,7 @@ public class InputView {
         gp.add(wordField, 0, 1);
         gp.add(translationText, 0, 2);
         gp.add(translationField, 0, 3);
+        gp.add(b, 0, 4);
 
         gp.setPrefSize(400, 300);
         gp.setAlignment(Pos.CENTER);

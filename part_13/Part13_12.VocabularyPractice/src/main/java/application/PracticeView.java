@@ -35,14 +35,18 @@ public class PracticeView {
         gp.add(translation, 0, 1);
         gp.add(check, 0, 2);
 
+        Label result = new Label();
+        gp.add(result, 0, 3);
+
         check.setOnAction(actionEvent -> {
             if(dictionary.getTranslation(word).equals(translation.getText())){
-                gp.add(new Label("Correct!"), 0, 3);
+                result.setText("Correct!");
             }else {
-                gp.add(new Label("Incorrect! The right translation of the word '" + word +
-                        "' is '" + dictionary.getTranslation(word) + "'."), 0, 3);
+                result.setText("Incorrect! The translation of the word '" + word +"' is '" +
+                        dictionary.getTranslation(word) + "'.");
             }
             word = dictionary.getRandomWord();
+            askTranslation.setText("Translate the word '" +word+ "'");
             translation.clear();
         });
         return gp;

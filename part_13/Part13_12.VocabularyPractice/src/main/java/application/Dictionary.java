@@ -10,6 +10,7 @@ public class Dictionary {
     public Dictionary(){
         this.words = new ArrayList<>();
         this.translations = new HashMap<>();
+        addTranslation("word", "slovo");
     }
 
     public void addTranslation(String word, String translation){
