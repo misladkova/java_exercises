@@ -22,7 +22,24 @@ public class ShanghaiApplication extends Application {
 
         chart.setTitle("University of Helsinki, Shanghai ranking");
 
-        XYChart.Series data = new XYChart.Series();
+        XYChart.Series<Number, Number> data = new XYChart.Series<>();
+
+        data.setName("ShanghaiRank");
+
+        data.getData().add(new XYChart.Data(2007, 73));
+        data.getData().add(new XYChart.Data(2008, 68));
+        data.getData().add(new XYChart.Data(2009, 72));
+        data.getData().add(new XYChart.Data(2010, 72));
+        data.getData().add(new XYChart.Data(2011, 74));
+        data.getData().add(new XYChart.Data(2012, 73));
+        data.getData().add(new XYChart.Data(2013, 76));
+        data.getData().add(new XYChart.Data(2014, 73));
+        data.getData().add(new XYChart.Data(2015, 67));
+        data.getData().add(new XYChart.Data(2016, 56));
+        data.getData().add(new XYChart.Data(2017, 56));
+
+        chart.getData().add(data);
+
 
         Scene scene = new Scene(chart, 600, 400);
         stage.setScene(scene);
