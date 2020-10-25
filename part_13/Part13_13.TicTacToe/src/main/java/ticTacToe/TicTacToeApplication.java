@@ -14,15 +14,17 @@ import javafx.stage.Stage;
 public class TicTacToeApplication extends Application {
 
     private String player;
+    private boolean boo;
 
     public TicTacToeApplication(){
         this.player = "X";
+        this.boo = false;
     }
 
     @Override
     public void start(Stage stage) throws Exception {
 
-        Label turn = new Label("Turn: "+player);
+        Label turn = new Label("Turn: "+player());
         //Button b = new Button(" ");
         //b.setFont(Font.font("Monospaced", 40));
 
@@ -39,6 +41,13 @@ public class TicTacToeApplication extends Application {
                 Button button = new Button(" ");
                 button.setFont(Font.font("Monospaced", 30));
                 gp.add(button, row, col);
+                button.setOnAction(actionEvent -> {
+                    if (button.getText().equals(" ")) {
+                        button.setText(player());
+                        boo = !boo;
+                    }
+                    turn.setText("Turn: "+player());
+                });
             }
         }
 
@@ -47,6 +56,19 @@ public class TicTacToeApplication extends Application {
         Scene scene = new Scene(bp);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public boolean whichPlayer(){
+        return boo;
+    }
+
+    public String player(){
+        if(boo==false){
+            player = "X";
+            return player;
+        }
+        player = "O";
+        return player;
     }
 
     public static void main(String[] args) {
