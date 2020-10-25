@@ -12,8 +12,8 @@ public class ShanghaiApplication extends Application {
     @Override
     public void start(Stage stage) throws Exception{
 
-        NumberAxis x = new NumberAxis();
-        NumberAxis y = new NumberAxis();
+        NumberAxis x = new NumberAxis(2006, 2018, 1);
+        NumberAxis y = new NumberAxis(0, 100, 10);
 
         x.setLabel("Year");
         y.setLabel("Ranking");
