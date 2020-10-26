@@ -1,8 +1,6 @@
 package application;
 
 import javafx.application.Application;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
@@ -24,8 +22,25 @@ public class SavingsCalculatorApplication extends Application {
     NumberAxis y = new NumberAxis();
     LineChart<Number, Number> lineChart = new LineChart<>(x, y);
 
-    public void updateData(double sav, double rate){
+    public void updateData(double sav, double rate) {
+        savingsValue.setText(String.format("%.1f", sav));
+        interestRateValue.setText(String.format("%.1f", rate));
+        XYChart.Series<Number, Number> data1 = new XYChart.Series<>();
+        for (int years = 0; years < 31; years++) {
+            data1.getData().add(new XYChart.Data<>(years, (years * 12 * sav)));
+        }
 
+        XYChart.Series<Number, Number> data2 = new XYChart.Series<>();
+        double sum = 0;
+        for (int years = 0; years < 31; years++) {
+            double a = ((sum + sav * 12) / 100 * rate);
+            sum += a + (sav * 12);
+            data2.getData().add(new XYChart.Data<>(years, sum));
+        }
+
+        lineChart.getData().clear();
+        lineChart.getData().add(data1);
+        lineChart.getData().add(data2);
     }
 
     @Override
@@ -45,37 +60,12 @@ public class SavingsCalculatorApplication extends Application {
             double sav = (double) new_val;
             double rate = secondSlider.getValue();
             updateData(sav, rate);
-//            savingsValue.setText(String.format("%.1f", new_val));
-//
-//            XYChart.Series<Number, Number> data1 = new XYChart.Series<>();
-//
-//            for (int years = 0; years < 31; years++) {
-//                data1.getData().add(new XYChart.Data<>(years, (years * 12 * firstSlider.getValue())));
-//            }
-////            lineChart.getData().clear();
-//            lineChart.getData().set(0, data1);
-//            //lineChart.getData().add(data1);
         });
 
         secondSlider.valueProperty().addListener((ov, old_val, new_val) -> {
             double sav = firstSlider.getValue();
             double rate = (double) new_val;
             updateData(sav, rate);
-//            interestRateValue.setText(String.format("%.1f", new_val));
-
-//            XYChart.Series<Number, Number> data12 = new XYChart.Series<>();
-//
-//            double sum = 0;
-//            for (int years = 0; years < 31; years++) {
-//                double a = ((sum + firstSlider.getValue() * 12) / 100 * secondSlider.getValue());
-//                sum += a + (firstSlider.getValue() * 12);
-//                data12.getData().add(new XYChart.Data<>(years, sum));
-//            }
-//            if(lineChart.getData().size() > 1){
-//                lineChart.getData().set(1, data12);
-//            }else{
-//                lineChart.getData().add(data12);
-//            }
         });
 
         for (int years = 0; years < 31; years++) {
@@ -106,7 +96,6 @@ public class SavingsCalculatorApplication extends Application {
         stage.setScene(scene);
         stage.show();
     }
-
 
     public static void main(String[] args) {
 
