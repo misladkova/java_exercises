@@ -32,7 +32,8 @@ public class SavingsCalculatorApplication extends Application {
 
         XYChart.Series<Number, Number> data2 = new XYChart.Series<>();
         double sum = 0;
-        for (int years = 0; years < 31; years++) {
+        data2.getData().add(new XYChart.Data<>(0, 0));
+        for (int years = 1; years < 31; years++) {
             double a = ((sum + sav * 12) / 100 * rate);
             sum += a + (sav * 12);
             data2.getData().add(new XYChart.Data<>(years, sum));
@@ -54,7 +55,8 @@ public class SavingsCalculatorApplication extends Application {
         firstSlider.setShowTickLabels(true);
         firstSlider.setShowTickMarks(true);
 
-        XYChart.Series<Number, Number> data = new XYChart.Series<>();
+        secondSlider.setShowTickLabels(true);
+        secondSlider.setShowTickMarks(true);
 
         firstSlider.valueProperty().addListener((ov, old_val, new_val) -> {
             double sav = (double) new_val;
@@ -68,10 +70,7 @@ public class SavingsCalculatorApplication extends Application {
             updateData(sav, rate);
         });
 
-        for (int years = 0; years < 31; years++) {
-            data.getData().add(new XYChart.Data<>(years, (years * 12 * firstSlider.getValue())));
-        }
-        lineChart.getData().add(data);
+        updateData(25,0);
 
         BorderPane slider1 = new BorderPane();
         slider1.setLeft(savings);
