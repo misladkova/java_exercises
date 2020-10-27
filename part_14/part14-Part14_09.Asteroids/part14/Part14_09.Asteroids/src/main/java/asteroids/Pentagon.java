@@ -4,7 +4,7 @@ import javafx.scene.shape.Polygon;
 
 import java.util.Random;
 
-public class Pentagons {
+public class Pentagon {
 
     public Polygon createPentagon() {
         Random rnd = new Random();

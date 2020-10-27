@@ -40,6 +40,8 @@ public class AsteroidsApplication extends Application{
             pressedKeys.put(keyEvent.getCode(), Boolean.FALSE);
         });
 
+        List<Projectile> projectiles = new ArrayList<>();
+
         stage.setScene(scene);
         stage.setTitle("Asteroids!");
         stage.show();
@@ -55,6 +57,13 @@ public class AsteroidsApplication extends Application{
                 }
                 if(pressedKeys.getOrDefault(KeyCode.UP, Boolean.FALSE)){
                     ship.accelerate();
+                }
+                if(pressedKeys.getOrDefault(KeyCode.SPACE, Boolean.FALSE)){
+                    Projectile projectile = new Projectile((int)ship.getShape().getTranslateX(),
+                            (int)ship.getShape().getTranslateY());
+                    projectile.getShape().setRotate(ship.getShape().getRotate());
+                    projectiles.add(projectile);
+                    pane.getChildren().add(projectile.getShape());
                 }
                 ship.move();
                 asteroids.forEach(asteroid -> asteroid.move());
