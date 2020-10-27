@@ -58,11 +58,13 @@ public class AsteroidsApplication extends Application{
                 if(pressedKeys.getOrDefault(KeyCode.UP, Boolean.FALSE)){
                     ship.accelerate();
                 }
-                if(pressedKeys.getOrDefault(KeyCode.SPACE, Boolean.FALSE)){
+                if(pressedKeys.getOrDefault(KeyCode.SPACE, Boolean.FALSE)&&projectiles.size()<3){
                     Projectile projectile = new Projectile((int)ship.getShape().getTranslateX(),
                             (int)ship.getShape().getTranslateY());
                     projectile.getShape().setRotate(ship.getShape().getRotate());
                     projectiles.add(projectile);
+                    projectile.accelerate();
+                    projectile.setLocation(projectile.getLocation().normalize().multiply(2));
                     pane.getChildren().add(projectile.getShape());
                 }
                 ship.move();
@@ -72,6 +74,7 @@ public class AsteroidsApplication extends Application{
                         stop();
                     }
                 });
+                projectiles.forEach(projectile -> projectile.move());
             }
         }.start();
     }
