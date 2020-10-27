@@ -17,11 +17,20 @@ public abstract class DrawPolygon {
         this.location = new Point2D(x, y);
     }
 
+    public Polygon getShape(){
+        return shape;
+    }
+
     public void turnRight(){
         shape.setRotate(shape.getRotate()+5);
     }
 
     public void turnLeft(){
         shape.setRotate(shape.getRotate()-5);
+    }
+
+    public void move(){
+        shape.setTranslateX(shape.getTranslateX()+location.getX());
+        shape.setTranslateY(shape.getTranslateY()+location.getY());
     }
 }
