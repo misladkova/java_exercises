@@ -7,19 +7,28 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class AsteroidsApplication extends Application{
+
+    public static int HEIGHT = 500;
+    public static int WIDTH = 600;
 
     @Override
     public void start(Stage stage) throws Exception {
 
-        SpaceShip ship = new SpaceShip(0, 0);
+        SpaceShip ship = new SpaceShip(WIDTH/2, HEIGHT/2);
+        List<Asteroid> asteroids = new ArrayList<>();
+        for(int i = 0; i<5; i++){
+            Random r = new Random();
+            Asteroid asteroid = new Asteroid(r.nextInt(WIDTH/4), r.nextInt(HEIGHT/5));
+            asteroids.add(asteroid);
+        }
 
         Pane pane = new Pane();
-        pane.setPrefSize(600, 500);
-        pane.getChildren().add(ship.getShape());
+        pane.setPrefSize(WIDTH, HEIGHT);
+        pane.getChildren().addAll(ship.getShape());
+        asteroids.forEach(asteroid -> pane.getChildren().add(asteroid.getShape()));
 
         Scene scene = new Scene(pane);
 
@@ -48,6 +57,12 @@ public class AsteroidsApplication extends Application{
                     ship.accelerate();
                 }
                 ship.move();
+                asteroids.forEach(asteroid -> asteroid.move());
+                asteroids.forEach(asteroid -> {
+                    if(ship.collide(asteroid.getShape())){
+                        stop();
+                    }
+                });
             }
         }.start();
     }
@@ -60,7 +75,7 @@ public class AsteroidsApplication extends Application{
     }
 
     public static int partsCompleted() {
-        return 1;
+        return 3;
     }
 
 }
