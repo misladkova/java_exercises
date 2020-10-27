@@ -45,12 +45,14 @@ public abstract class DrawPolygon {
         if(shape.getTranslateY()>AsteroidsApplication.HEIGHT){
             shape.setTranslateY(shape.getTranslateY()%AsteroidsApplication.HEIGHT);
         }
+        shape.setTranslateX(shape.getTranslateX()+location.getX());
+        shape.setTranslateY(shape.getTranslateY()+location.getY());
     }
 
     public void accelerate(){
         double changeX = Math.cos(Math.toRadians(shape.getRotate()));
         double changeY = Math.sin(Math.toRadians(shape.getRotate()));
-        location = location.add((-changeX)*0.01, (-changeY)*0.01);
+        location = location.add((changeX)*0.01, (changeY)*0.01);
     }
 
     public boolean collide(Polygon s){

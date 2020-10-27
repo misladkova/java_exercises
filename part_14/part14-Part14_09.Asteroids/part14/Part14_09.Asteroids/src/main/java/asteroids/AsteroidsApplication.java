@@ -11,7 +11,7 @@ import java.util.*;
 
 public class AsteroidsApplication extends Application{
 
-    public static int HEIGHT = 500;
+    public static int HEIGHT = 400;
     public static int WIDTH = 600;
 
     @Override
@@ -27,7 +27,7 @@ public class AsteroidsApplication extends Application{
 
         Pane pane = new Pane();
         pane.setPrefSize(WIDTH, HEIGHT);
-        pane.getChildren().addAll(ship.getShape());
+        pane.getChildren().add(ship.getShape());
         asteroids.forEach(asteroid -> pane.getChildren().add(asteroid.getShape()));
 
         Scene scene = new Scene(pane);
