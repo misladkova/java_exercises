@@ -7,7 +7,7 @@ public class Asteroid extends DrawPolygon{
     private double rotation;
 
     public Asteroid(int x, int y) {
-        super(new Pentagons().createPentagon(), x, y);
+        super(new Pentagon().createPentagon(), x, y);
 
         Random r = new Random();
         super.getShape().setRotate(r.nextInt(360));
