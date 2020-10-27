@@ -33,4 +33,10 @@ public abstract class DrawPolygon {
         shape.setTranslateX(shape.getTranslateX()+location.getX());
         shape.setTranslateY(shape.getTranslateY()+location.getY());
     }
+
+    public void accelerate(){
+        double changeX = Math.cos(Math.toRadians(shape.getRotate()));
+        double changeY = Math.sin(Math.toRadians(shape.getRotate()));
+        location = location.add((-changeX)*0.05, (-changeY)*0.05);
+    }
 }

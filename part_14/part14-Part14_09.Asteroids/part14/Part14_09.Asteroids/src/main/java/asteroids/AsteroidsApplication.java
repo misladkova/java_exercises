@@ -44,6 +44,9 @@ public class AsteroidsApplication extends Application{
                 if (pressedKeys.getOrDefault(KeyCode.LEFT, Boolean.FALSE)){
                     ship.turnLeft();
                 }
+                if(pressedKeys.getOrDefault(KeyCode.UP, Boolean.FALSE)){
+                    ship.accelerate();
+                }
                 ship.move();
             }
         }.start();
