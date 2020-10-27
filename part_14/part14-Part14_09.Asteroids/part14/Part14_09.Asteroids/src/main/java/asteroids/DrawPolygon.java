@@ -22,6 +22,14 @@ public abstract class DrawPolygon {
         return shape;
     }
 
+    public void setLocation(Point2D location) {
+        this.location = location;
+    }
+
+    public Point2D getLocation(){
+        return location;
+    }
+
     public void turnRight(){
         shape.setRotate(shape.getRotate()+5);
     }
@@ -52,7 +60,7 @@ public abstract class DrawPolygon {
     public void accelerate(){
         double changeX = Math.cos(Math.toRadians(shape.getRotate()));
         double changeY = Math.sin(Math.toRadians(shape.getRotate()));
-        location = location.add((changeX)*0.01, (changeY)*0.01);
+        location = location.add((changeX)*0.005, (changeY)*0.005);
     }
 
     public boolean collide(Polygon s){
