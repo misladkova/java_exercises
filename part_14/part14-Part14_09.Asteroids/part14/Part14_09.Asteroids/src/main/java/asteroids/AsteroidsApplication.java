@@ -9,6 +9,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.util.*;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 public class AsteroidsApplication extends Application {
@@ -27,6 +28,8 @@ public class AsteroidsApplication extends Application {
             Asteroid asteroid = new Asteroid(r.nextInt(WIDTH / 4), r.nextInt(HEIGHT / 5));
             asteroids.add(asteroid);
         }
+
+        AtomicInteger increasePoints = new AtomicInteger();
 
         Pane pane = new Pane();
         pane.setPrefSize(WIDTH, HEIGHT);
@@ -83,6 +86,7 @@ public class AsteroidsApplication extends Application {
                     asteroids.forEach(asteroid -> {
                         if (projectile.collide(asteroid.getShape())) {
                             projectile.setAlive(false);
+                            points.setText("Points: "+increasePoints.addAndGet(1000));
                             asteroid.setAlive(false);
                         }
                     });
@@ -100,10 +104,17 @@ public class AsteroidsApplication extends Application {
                 asteroids.removeAll(asteroids.stream()
                         .filter(asteroid -> !asteroid.isAlive())
                         .collect(Collectors.toList()));
+
+                if(Math.random() <= 0.005) {
+                    Asteroid asteroid = new Asteroid(WIDTH, HEIGHT);
+                    if(!asteroid.collide(ship.getShape())) {
+                        asteroids.add(asteroid);
+                        pane.getChildren().add(asteroid.getShape());
+                    }
+                }
             }
         }.start();
     }
-
 
     public static void main(String[] args) {
 
@@ -113,7 +124,7 @@ public class AsteroidsApplication extends Application {
     }
 
     public static int partsCompleted() {
-        return 3;
+        return 4;
     }
 
 }

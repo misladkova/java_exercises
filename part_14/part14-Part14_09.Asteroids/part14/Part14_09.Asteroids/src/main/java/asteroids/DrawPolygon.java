@@ -9,6 +9,7 @@ public abstract class DrawPolygon {
 
     private Polygon shape;
     private Point2D location;
+    private boolean alive;
 
     public DrawPolygon(Polygon shape, int x, int y){
         this.shape = shape;
@@ -16,6 +17,7 @@ public abstract class DrawPolygon {
         this.shape.setTranslateX(x);
         this.shape.setTranslateY(y);
         this.location = new Point2D(0, 0);
+        this.alive = true;
     }
 
     public Polygon getShape(){
@@ -30,12 +32,20 @@ public abstract class DrawPolygon {
         return location;
     }
 
+    public void setAlive(boolean alive1){
+        alive = alive1;
+    }
+
+    public boolean isAlive(){
+        return alive;
+    }
+
     public void turnRight(){
-        shape.setRotate(shape.getRotate()+5);
+        shape.setRotate(shape.getRotate()+3);
     }
 
     public void turnLeft(){
-        shape.setRotate(shape.getRotate()-5);
+        shape.setRotate(shape.getRotate()-3);
     }
 
     public void move(){
